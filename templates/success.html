@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Ready - ResQID</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/emergency.css') }}">
+</head>
+<body>
+    <div class="emergency-container" style="text-align: center;">
+        
+        <header class="emergency-header" style="justify-content: center;">
+            <div class="brand">
+                <div class="brand-text" style="align-items: center; text-align: center;">
+                    <div class="brand-name">✅ ID Created</div>
+                </div>
+            </div>
+        </header>
+
+        <section class="info-card" style="display: flex; flex-direction: column; align-items: center;">
+            <p style="color: #666; margin-bottom: 10px;">Emergency ID for:</p>
+            <h2 class="person-name" style="font-size: 24px; margin-bottom: 20px;">{{ full_name }}</h2>
+
+            <div style="padding: 15px; border: 2px dashed #ddd; border-radius: 12px; display: inline-block;">
+                <img src="{{ url_for('static', filename='qrcodes/' + user_id + '.png') }}" 
+                     alt="Emergency QR Code" 
+                     width="200" height="200"
+                     style="display: block;">
+            </div>
+
+            <p class="footer-warning" style="margin-top: 20px;">
+                Download or screenshot this QR code. Print it and keep it in your wallet or stick it on your helmet/phone.
+            </p>
+        </section>
+
+        <a href="{{ emergency_url }}" target="_blank" class="call-btn" style="background: var(--primary-red);">
+            🔍 Test My Emergency Page
+        </a>
+
+        <a href="/" class="btn-secondary" style="margin-top: 20px; display: inline-block; color: #666; background: transparent; box-shadow: none;">
+            ← Create Another ID
+        </a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</body>
+</html>
