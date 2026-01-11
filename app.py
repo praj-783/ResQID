@@ -5,6 +5,8 @@ import os
 import sqlite3
 
 app = Flask(__name__, static_url_path='/static')
+from whitenoise import WhiteNoise
+app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
 # ---------- CONFIG ----------
 # 1. ADDED: Your secret password for disabling/enabling IDs
 ADMIN_SECRET = "my-super-secret-password-123" 
@@ -117,3 +119,4 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
 
     app.run(host="0.0.0.0", port=port)
+
